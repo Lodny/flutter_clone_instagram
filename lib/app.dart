@@ -19,9 +19,12 @@ class App extends StatelessWidget {
         appBar: AppBar(),
         body: Container(),
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
           currentIndex: 0,
-          onTap: (index) {},
-          showSelectedLabels: true,
+          onTap: (index) {
+          },
           selectedItemColor: Colors.black,
           items: [
             BottomNavigationBarItem(
@@ -33,6 +36,26 @@ class App extends StatelessWidget {
               icon: Image.asset(IconsPath.searchOff,),
               activeIcon: Image.asset(IconsPath.searchOn),
               label: 'Search',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(IconsPath.uploadIcon,),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(IconsPath.activeOff,),
+              activeIcon: Image.asset(IconsPath.activeOn),
+              label: 'Search',
+            ),
+            BottomNavigationBarItem(
+              icon: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.grey,
+                ),
+              ),
+              label: 'Home',
             )
           ],
         ),
