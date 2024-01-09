@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clone_instagram/binding/bottom_nav_binding.dart';
+import 'package:get/get.dart';
 
 import 'app.dart';
 
@@ -11,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
         // )
       ),
       home: App(),
+      initialBinding: BottomNavBinding(),
     );
   }
 }

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/imagepath.dart';
+import 'package:get/get.dart';
 
-class App extends StatelessWidget {
+import 'controller/bottom_nav_controller.dart';
+
+class App extends GetView<BottomNavController> {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
+    return Obx(() => PopScope(
       canPop: false,
       onPopInvoked: (bool didPop) {
         print('didPop:' + didPop.toString());
@@ -17,13 +20,23 @@ class App extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(),
-        body: Container(),
+        body: IndexedStack(
+          index: controller.bottomNavIndex.value,
+          children: [
+            Container(child: Center(child: Text('Home'),),),
+            Container(child: Center(child: Text('Search'),),),
+            Container(child: Center(child: Text('Upload'),),),
+            Container(child: Center(child: Text('Activity'),),),
+            Container(child: Center(child: Text('MyPage'),),),
+          ],
+        ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          currentIndex: 0,
+          currentIndex: controller.bottomNavIndex.value,
           onTap: (index) {
+            controller.setBottomNavIndex(index);
           },
           selectedItemColor: Colors.black,
           items: [
@@ -60,7 +73,7 @@ class App extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 
   void _showBackDialog(context) {
