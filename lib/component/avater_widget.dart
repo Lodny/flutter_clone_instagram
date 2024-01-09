@@ -17,11 +17,12 @@ class AvatarWidget extends StatelessWidget {
 
   AvatarWidget({
     super.key,
-      required this.type,
-      required this.thumbPath,
-      this.hasStory,
-      this.nickName,
-      this.size}); // AvatarWidget({
+    required this.type,
+    required this.thumbPath,
+    this.hasStory,
+    this.nickName,
+    this.size = 65,
+  }); // AvatarWidget({
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +38,6 @@ class AvatarWidget extends StatelessWidget {
 
   Widget type1Widget() {
     return Container(
-      width: 65,
-      height: 65,
       padding: EdgeInsets.all(3),
       margin: EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
@@ -52,31 +51,22 @@ class AvatarWidget extends StatelessWidget {
         ),
         shape: BoxShape.circle,
       ),
-      child: Container(
-        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
-        padding: EdgeInsets.all(2),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(65),
-          child: CachedNetworkImage(
-            imageUrl: thumbPath,
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
+      child: type2Widget(),
     );
   }
 
   Widget type2Widget() {
     return Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Colors.purple,
-                Colors.orange,
-              ]
-          )
+      width: size,
+      height: size,
+      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
+      padding: EdgeInsets.all(2),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(size!),
+        child: CachedNetworkImage(
+          imageUrl: thumbPath,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
