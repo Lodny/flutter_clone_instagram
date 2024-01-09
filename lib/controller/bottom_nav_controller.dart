@@ -17,9 +17,10 @@ class BottomNavController extends GetxService {
   void setBottomNavIndex(int index, {bool withoutHistory = false}) {
     if (bottomNavIndex == index) return;
 
-    if (! withoutHistory)
+    if (! withoutHistory) {
+      history.remove(bottomNavIndex.value);
       history.add(bottomNavIndex.value);
-
+    }
     print('set() : ' + history.toString());
 
     switch(BottomNavEnum.values[index]) {
