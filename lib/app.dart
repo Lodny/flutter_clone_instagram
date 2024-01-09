@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/imagepath.dart';
 import 'package:get/get.dart';
@@ -21,7 +23,7 @@ class App extends GetView<BottomNavController> {
         if (index >= 0)
           controller.setBottomNavIndexWithoutHistory(index);
         else
-          _showBackDialog(context);
+          _showBackDialog();
       },
       child: Scaffold(
         appBar: AppBar(),
@@ -81,21 +83,21 @@ class App extends GetView<BottomNavController> {
     ));
   }
 
-  void _showBackDialog(context) {
+  void _showBackDialog() {
     showDialog<void>(
-        context: context,
+        context: Get.context!,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Are you sure?'),
+            title: const Text('시스템'),
             content: const Text(
-              'Are you sure you want to leave this page?',
+              '종료 하시겠습니까?',
             ),
             actions: <Widget>[
               TextButton(
                 style: TextButton.styleFrom(
                   textStyle: Theme.of(context).textTheme.labelLarge,
                 ),
-                child: const Text('Nevermind'),
+                child: const Text('취소'),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -104,10 +106,11 @@ class App extends GetView<BottomNavController> {
                 style: TextButton.styleFrom(
                   textStyle: Theme.of(context).textTheme.labelLarge,
                 ),
-                child: const Text('Leave'),
+                child: const Text('확인'),
                 onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.pop(context);
+                  exit(0);
+                  // Navigator.pop(context);
+                  // Navigator.pop(context);
                 },
               ),
             ],
