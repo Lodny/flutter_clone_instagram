@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/component/avater_widget.dart';
+import 'package:flutter_clone_instagram/component/post_widget.dart';
 import 'package:flutter_clone_instagram/imagepath.dart';
 
 class HomePage extends StatelessWidget {
@@ -100,7 +101,8 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _postList() {
-    return Container(decoration: BoxDecoration(
-      shape: BoxShape.circle, color: Colors.grey,),);
+    return Column(
+      children: List.generate(50, (index) => PostWidget()),
+    );
   }
 }

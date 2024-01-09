@@ -72,17 +72,17 @@ class AvatarWidget extends StatelessWidget {
   }
 
   Widget type3Widget() {
-    return Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Colors.purple,
-                Colors.orange,
-              ]
-          )
-      ),
+    return Row(
+      children: [
+        type1Widget(),
+        Text(
+          nickName ?? '',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
     );
   }
 }
