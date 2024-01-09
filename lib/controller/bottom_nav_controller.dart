@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../page/upload_page.dart';
+
 enum BottomNavEnum {
   Home,
   Search,
@@ -15,6 +17,7 @@ class BottomNavController extends GetxService {
     var nav = BottomNavEnum.values[index];
     switch(nav) {
       case BottomNavEnum.Upload:
+        Get.to(UploadPage());
         break;
 
       case BottomNavEnum.Home:
