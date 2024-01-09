@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 enum AvatarTypeEnum {
@@ -36,6 +37,10 @@ class AvatarWidget extends StatelessWidget {
 
   Widget type1Widget() {
     return Container(
+      width: 65,
+      height: 65,
+      padding: EdgeInsets.all(3),
+      margin: EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topRight,
@@ -44,7 +49,19 @@ class AvatarWidget extends StatelessWidget {
             Colors.purple,
             Colors.orange,
           ]
-        )
+        ),
+        shape: BoxShape.circle,
+      ),
+      child: Container(
+        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
+        padding: EdgeInsets.all(2),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(65),
+          child: CachedNetworkImage(
+            imageUrl: thumbPath,
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }

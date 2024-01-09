@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clone_instagram/component/avater_widget.dart';
 import 'package:flutter_clone_instagram/imagepath.dart';
 
 class HomePage extends StatelessWidget {
@@ -38,14 +39,19 @@ class HomePage extends StatelessWidget {
       child: Row(
         children: List.generate(
             100,
-            (index) => Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.grey,
-                  ),
-                )),
+                (index) => AvatarWidget(
+                  type: AvatarTypeEnum.TYPE1,
+                  thumbPath: 'https://images.unsplash.com/photo-1528301721190-186c3bd85418?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D',
+                )
+            // Container(
+                //   width: 60,
+                //   height: 60,
+                //   decoration: BoxDecoration(
+                //     shape: BoxShape.circle,
+                //     color: Colors.grey,
+                //   ),
+                // )
+        ),
       ),
     );
   }
