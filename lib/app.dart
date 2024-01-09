@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/imagepath.dart';
+import 'package:flutter_clone_instagram/page/home_page.dart';
 import 'package:get/get.dart';
 
 import 'controller/bottom_nav_controller.dart';
@@ -26,11 +27,10 @@ class App extends GetView<BottomNavController> {
           _showBackDialog();
       },
       child: Scaffold(
-        appBar: AppBar(),
         body: IndexedStack(
           index: controller.bottomNavIndex.value,
           children: [
-            Container(child: Center(child: Text('Home'),),),
+            HomePage(),
             Container(child: Center(child: Text('Search'),),),
             Container(child: Center(child: Text('Upload'),),),
             Container(child: Center(child: Text('Activity'),),),
