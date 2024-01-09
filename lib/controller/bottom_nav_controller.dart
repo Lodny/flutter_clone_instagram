@@ -12,10 +12,17 @@ enum BottomNavEnum {
 
 class BottomNavController extends GetxService {
   RxInt bottomNavIndex = 0.obs;
+  List<int> history = [];
 
-  void setBottomNavIndex(int index) {
-    var nav = BottomNavEnum.values[index];
-    switch(nav) {
+  void setBottomNavIndex(int index, {bool withoutHistory = false}) {
+    if (bottomNavIndex == index) return;
+
+    if (! withoutHistory)
+      history.add(bottomNavIndex.value);
+
+    print('set() : ' + history.toString());
+
+    switch(BottomNavEnum.values[index]) {
       case BottomNavEnum.Upload:
         Get.to(UploadPage());
         break;
@@ -27,5 +34,18 @@ class BottomNavController extends GetxService {
         bottomNavIndex(index);
         break;
     }
+  }
+
+  void setBottomNavIndexWithoutHistory(int index) {
+    setBottomNavIndex(index, withoutHistory: true);
+  }
+
+  int back() {
+    if (history.isEmpty)
+      return -1;
+
+    print('back() : ' + history.toString());
+
+    return history.removeLast();
   }
 }

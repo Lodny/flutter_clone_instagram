@@ -16,7 +16,12 @@ class App extends GetView<BottomNavController> {
         if (didPop) {
           return;
         }
-        _showBackDialog(context);
+
+        int index = controller.back();
+        if (index >= 0)
+          controller.setBottomNavIndexWithoutHistory(index);
+        else
+          _showBackDialog(context);
       },
       child: Scaffold(
         appBar: AppBar(),
