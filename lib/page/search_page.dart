@@ -48,7 +48,8 @@ class _SearchPageState extends State<SearchPage> {
         Expanded(
           child: GestureDetector(
             onTap: () {
-              Get.to(SearchingPage());
+              // Get.to(SearchingPage());
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SearchingPage(),));
             },
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),

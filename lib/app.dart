@@ -32,7 +32,12 @@ class App extends GetView<BottomNavController> {
           index: controller.bottomNavIndex.value,
           children: [
             const HomePage(),
-            const SearchPage(),
+            Navigator(
+              key: controller.searchPageNavigationKey,
+              onGenerateRoute: (settings) =>
+                  MaterialPageRoute(builder: (context) => SearchPage(),),
+            ),
+            // const SearchPage(),
             Container(child: Center(child: Text('Upload'),),),
             Container(child: Center(child: Text('Activity'),),),
             Container(child: Center(child: Text('MyPage'),),),

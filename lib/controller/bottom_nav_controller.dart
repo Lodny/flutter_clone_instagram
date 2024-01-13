@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../page/upload_page.dart';
@@ -13,6 +14,8 @@ enum BottomNavEnum {
 class BottomNavController extends GetxService {
   RxInt bottomNavIndex = 0.obs;
   List<int> history = [];
+  GlobalKey<NavigatorState> searchPageNavigationKey = GlobalKey<NavigatorState>();
+
 
   void setBottomNavIndex(int index, {bool withoutHistory = false}) {
     if (bottomNavIndex == index) return;
