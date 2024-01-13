@@ -12,6 +12,7 @@ class PostWidget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 20),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _header(),
           SizedBox(height: 15,),
@@ -20,8 +21,10 @@ class PostWidget extends StatelessWidget {
           _infoCount(),
           SizedBox(height: 5,),
           _infoDesc(),
-          // _replyTextBtn(),
-          // _dataAgo(),
+          SizedBox(height: 5,),
+          _replyTextBtn(),
+          SizedBox(height: 5,),
+          _dataAgo(),
         ],
       )
     );
@@ -103,6 +106,29 @@ class PostWidget extends StatelessWidget {
             linkColor: Colors.grey,
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _replyTextBtn() {
+    return GestureDetector(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Text(
+          '댓글 199개 모두 보기',
+          style: TextStyle(color: Colors.grey, fontSize: 13),
+        ),
+      ),
+    );
+  }
+
+  Widget _dataAgo() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      child: Text(
+        '1일전',
+        style: TextStyle(color: Colors.grey, fontSize: 11),
       ),
     );
   }
