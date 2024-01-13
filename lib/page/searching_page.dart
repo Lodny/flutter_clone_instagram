@@ -11,11 +11,12 @@ class SearchingPage extends StatefulWidget {
 
 class _SearchingPageState extends State<SearchingPage> with TickerProviderStateMixin {
   late TabController tabController;
+  List<String> tabMenuText = ['인기', '계정', '오디오', '태그', '장소'];
 
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 5, vsync: this);
+    tabController = TabController(length: tabMenuText.length, vsync: this);
   }
 
   @override
@@ -70,12 +71,11 @@ class _SearchingPageState extends State<SearchingPage> with TickerProviderStateM
   }
 
   List<Widget> _tabMenuList() {
-    List<String> menuText = ['인기', '계정', '오디오', '태그', '장소'];
 
-    return menuText.map((text) => Padding(
+    return tabMenuText.map((menuText) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 15),
           child: Text(
-            '인기',
+            menuText,
             style: TextStyle(fontSize: 15, color: Colors.black),
           ),
         ),
@@ -84,8 +84,15 @@ class _SearchingPageState extends State<SearchingPage> with TickerProviderStateM
   }
 
   Widget _body() {
-    return Container(
-      color: Colors.red,
+    return TabBarView(
+      controller: tabController,
+      children: [
+        Center(child: Text('인기페이지')),
+        Center(child: Text('계정페이지')),
+        Center(child: Text('오디오페이지')),
+        Center(child: Text('태그페이지')),
+        Center(child: Text('장소페이지')),
+      ]
     );
   }
 }
