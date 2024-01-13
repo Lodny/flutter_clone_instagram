@@ -15,7 +15,8 @@ class PostWidget extends StatelessWidget {
           _header(),
           SizedBox(height: 15,),
           _image(),
-          // _infoCount(),
+          SizedBox(height: 15,),
+          _infoCount(),
           // _infoDesc(),
           // _replyTextBtn(),
           // _dataAgo(),
@@ -51,6 +52,27 @@ class PostWidget extends StatelessWidget {
   Widget _image() {
     return CachedNetworkImage(
         imageUrl: 'https://starwalk.space/gallery/images/what-is-space/1920x1080.jpg'
+    );
+  }
+
+  Widget _infoCount() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Image.asset(IconsPath.likeOffIcon, width: 35,),
+              SizedBox(width: 15,),
+              Image.asset(IconsPath.replyIcon, width: 30,),
+              SizedBox(width: 15,),
+              Image.asset(IconsPath.directMessage, width: 30,),
+            ],
+          ),
+          Image.asset(IconsPath.bookMarkOffIcon, width: 30,),
+        ],
+      ),
     );
   }
 }
