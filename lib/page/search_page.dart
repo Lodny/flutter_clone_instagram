@@ -1,7 +1,34 @@
+import 'dart:math';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
+
+  @override
+  State<SearchPage> createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> {
+  List<List<int>> groupbox = [[], [], []];
+
+  @override
+  void initState() {
+    super.initState();
+
+    List<int> sumSize = [0, 0, 0];
+    for(var i = 0; i < 100; i++) {
+      var minIdx = sumSize.fold(0, (min, curr) => curr < sumSize[min] ? sumSize.indexOf(curr) : min);
+      var boxSize = (minIdx != 1) ? Random().nextInt(5) == 0 ? 2 : 1 : 1;
+      // print(minIdx.toString() + ' ' + boxSize.toString());
+      // print(sumSize);
+
+      sumSize[minIdx] += boxSize;
+      groupbox[minIdx].add(boxSize);
+    }
+    print(groupbox);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,29 +83,28 @@ class SearchPage extends StatelessWidget {
     return SingleChildScrollView(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-              child: Column(
-                children: [
-                  Container(height: 140, color: Colors.red,),
-                ],
-              )
+        children: List.generate(
+          groupbox.length,
+          (index) => Expanded(
+            child: Column(
+              children: groupbox[index]
+                  .map((boxSize) => Container(
+                        height: 140.0 * boxSize,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white,),
+                          color: Colors.primaries[
+                            Random().nextInt(Colors.primaries.length)
+                          ]
+                        ),
+                        child: CachedNetworkImage(
+                          imageUrl: 'https://starwalk.space/gallery/images/what-is-space/1920x1080.jpg',
+                          fit: BoxFit.cover,
+                        ),
+                      ))
+                  .toList(),
+            ),
           ),
-        Expanded(
-              child: Column(
-                children: [
-                  Container(height: 140, color: Colors.blue,),
-                ],
-              )
-          ),
-        Expanded(
-              child: Column(
-                children: [
-                  Container(height: 140, color: Colors.green,),
-                ],
-              )
-          ),
-        ],
+        ),
       ),
     );
   }
