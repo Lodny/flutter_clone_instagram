@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/imagepath.dart';
 import 'package:flutter_clone_instagram/page/home_page.dart';
+import 'package:flutter_clone_instagram/page/search_page.dart';
 import 'package:get/get.dart';
 
 import 'controller/bottom_nav_controller.dart';
@@ -30,8 +31,8 @@ class App extends GetView<BottomNavController> {
         body: IndexedStack(
           index: controller.bottomNavIndex.value,
           children: [
-            HomePage(),
-            Container(child: Center(child: Text('Search'),),),
+            const HomePage(),
+            const SearchPage(),
             Container(child: Center(child: Text('Upload'),),),
             Container(child: Center(child: Text('Activity'),),),
             Container(child: Center(child: Text('MyPage'),),),
