@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/component/avater_widget.dart';
 import 'package:flutter_clone_instagram/imagepath.dart';
@@ -17,7 +18,8 @@ class PostWidget extends StatelessWidget {
           _image(),
           SizedBox(height: 15,),
           _infoCount(),
-          // _infoDesc(),
+          SizedBox(height: 5,),
+          _infoDesc(),
           // _replyTextBtn(),
           // _dataAgo(),
         ],
@@ -71,6 +73,35 @@ class PostWidget extends StatelessWidget {
             ],
           ),
           Image.asset(IconsPath.bookMarkOffIcon, width: 30,),
+        ],
+      ),
+    );
+  }
+
+  Widget _infoDesc() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            '좋아요 150개',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          ExpandableText(
+            '컨텐츠 1입니다.\n컨텐츠 1입니다.\n컨텐츠 1입니다.\n컨텐츠 1입니다.',
+            prefixText: 'Juice',
+            prefixStyle: TextStyle(fontWeight: FontWeight.bold),
+            onPrefixTap: () {
+              print('Juice 페이지로 이동');
+            },
+            expandText: '더보기',
+            collapseText: '접기',
+            maxLines: 3,
+            expandOnTextTap: true,
+            collapseOnTextTap: true,
+            linkColor: Colors.grey,
+          ),
         ],
       ),
     );
