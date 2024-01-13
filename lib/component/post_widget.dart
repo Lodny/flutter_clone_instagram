@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_instagram/component/avater_widget.dart';
 import 'package:flutter_clone_instagram/imagepath.dart';
@@ -12,7 +13,12 @@ class PostWidget extends StatelessWidget {
       child: Column(
         children: [
           _header(),
-
+          SizedBox(height: 15,),
+          _image(),
+          // _infoCount(),
+          // _infoDesc(),
+          // _replyTextBtn(),
+          // _dataAgo(),
         ],
       )
     );
@@ -39,6 +45,12 @@ class PostWidget extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  Widget _image() {
+    return CachedNetworkImage(
+        imageUrl: 'https://starwalk.space/gallery/images/what-is-space/1920x1080.jpg'
     );
   }
 }
