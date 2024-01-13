@@ -10,7 +10,7 @@ class SearchPage extends StatelessWidget {
         child: Column(
           children: [
             _appBar(),
-            // _body()
+            Expanded(child: _body()),
           ],
         ),
       ),
@@ -46,6 +46,37 @@ class SearchPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Icon(Icons.location_pin),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _body() {
+    return SingleChildScrollView(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+              child: Column(
+                children: [
+                  Container(height: 140, color: Colors.red,),
+                ],
+              )
+          ),
+        Expanded(
+              child: Column(
+                children: [
+                  Container(height: 140, color: Colors.blue,),
+                ],
+              )
+          ),
+        Expanded(
+              child: Column(
+                children: [
+                  Container(height: 140, color: Colors.green,),
+                ],
+              )
           ),
         ],
       ),
