@@ -25,7 +25,7 @@ class App extends GetView<BottomNavController> {
         if (index >= 0)
           controller.setBottomNavIndexWithoutHistory(index);
         else
-          _showBackDialog();
+          controller.willPopAction();
       },
       child: Scaffold(
         body: IndexedStack(
@@ -87,40 +87,5 @@ class App extends GetView<BottomNavController> {
         ),
       ),
     ));
-  }
-
-  void _showBackDialog() {
-    showDialog<void>(
-        context: Get.context!,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('시스템'),
-            content: const Text(
-              '종료 하시겠습니까?',
-            ),
-            actions: <Widget>[
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: Theme.of(context).textTheme.labelLarge,
-                ),
-                child: const Text('취소'),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: Theme.of(context).textTheme.labelLarge,
-                ),
-                child: const Text('확인'),
-                onPressed: () {
-                  exit(0);
-                  // Navigator.pop(context);
-                  // Navigator.pop(context);
-                },
-              ),
-            ],
-          );
-        });
   }
 }

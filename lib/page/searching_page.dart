@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clone_instagram/controller/bottom_nav_controller.dart';
 import 'package:flutter_clone_instagram/imagepath.dart';
 import 'package:get/get.dart';
 
@@ -28,7 +29,10 @@ class _SearchingPageState extends State<SearchingPage> with TickerProviderStateM
             padding: const EdgeInsets.all(15.0),
             child: Image.asset(IconsPath.backBtnIcon),
           ),
-          onTap: Get.back,
+          // onTap: Get.back,
+          onTap: () {
+            Get.find<BottomNavController>().willPopAction();
+          },
         ),
         titleSpacing: 0,
         title: Container(
