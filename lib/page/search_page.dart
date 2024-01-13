@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_clone_instagram/page/searching_page.dart';
+import 'package:get/get.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -21,13 +23,9 @@ class _SearchPageState extends State<SearchPage> {
     for(var i = 0; i < 100; i++) {
       var minIdx = sumSize.fold(0, (min, curr) => curr < sumSize[min] ? sumSize.indexOf(curr) : min);
       var boxSize = (minIdx != 1) ? Random().nextInt(5) == 0 ? 2 : 1 : 1;
-      // print(minIdx.toString() + ' ' + boxSize.toString());
-      // print(sumSize);
-
       sumSize[minIdx] += boxSize;
       groupbox[minIdx].add(boxSize);
     }
-    print(groupbox);
   }
 
   @override
@@ -45,12 +43,13 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _appBar() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
+    return Row(
+      children: [
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              Get.to(SearchingPage());
+            },
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
               margin: EdgeInsets.only(left: 10),
@@ -70,12 +69,12 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(Icons.location_pin),
-          ),
-        ],
-      ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.location_pin),
+        ),
+      ],
     );
   }
 
